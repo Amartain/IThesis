@@ -40,4 +40,4 @@ def setup_training(dataset_choice, size_filter, batch_size, no_workers, model_ch
     trained_model = train_model(model=model,device=device, optimizer=optimizer, train_loader=train_loader, val_loader=val_loader, loss_function=loss_function, writer=writer, no_epochs=no_epochs, early_stop=early_stop, batch_size=batch_size)
     
     print("4. SAVING MODEL")
-    trained_model = torch.save(model, model_path)
+    torch.save(trained_model.state_dict(), model_path)

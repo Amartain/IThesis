@@ -12,7 +12,6 @@ class DatasetSelection(Enum):
     MPEG400 = auto()
     MPEG7 = auto() # 1400 images
     ANIMAL2000 = auto()
-    SWLEAF = "SwedishLeaves" # test only
 
 class ModelSelection(Enum):
     UNET = "U-Net"

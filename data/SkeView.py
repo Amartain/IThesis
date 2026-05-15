@@ -24,7 +24,7 @@ class SkeView(Dataset):
         self.all_labels = clean_labels(os.listdir(original_dir))
         self.labels = self.filter_by_size()
 
-        print(f"{len(self.labels)}/{len(self.all_labels)} kept for training. Filter size: {size_filter}")
+        print(f"{len(self.labels)}/{len(self.all_labels)} kept. Filter size: {size_filter}")
 
 
     def __len__(self):

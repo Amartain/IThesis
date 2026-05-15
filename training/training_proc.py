@@ -187,15 +187,24 @@ def train_model(model, device,  optimizer, train_loader, val_loader, loss_functi
 
         # TensorBoard
         writer.add_scalars("Train vs Validation Loss", {"Training Loss": epoch_train_loss, "Validation Loss": epoch_val_loss}, global_step=step)
-        writer.add_scalars("Training vs Validation ACCURACY (F1)", {"Training Dice":epoch_train_dice, "Validation Dice":epoch_val_dice}, global_step=step)
-        writer.add_hparams({"batch_size":batch_size}, {"Training loss":epoch_train_loss, "Validation Loss":epoch_val_loss, "Training Accuracy F1":epoch_train_dice,"Validation Accuracy F1":epoch_val_dice}, global_step=step)
+        writer.add_scalars("Training vs Validation DICE", {"Training Dice":epoch_train_dice, "Validation Dice":epoch_val_dice}, global_step=step)
 
         
         print(f"{epoch}/{no_epochs} done..................................")
 
         step += 1
     
+    print("Training finished, logging results...")
 
-    print("Training finished")
+
+    writer.add_hparams(
+        {"batch_size":batch_size}, 
+        {"Training loss":epoch_train_loss,
+        "Validation Loss":epoch_val_loss, 
+        "Training Accuracy F1":epoch_train_dice,
+        "Validation Accuracy F1":epoch_val_dice
+        })
+    
+
 
     return model
