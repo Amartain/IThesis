@@ -39,7 +39,7 @@ MODEL_MAP = {
 LOSS_MAP = {
     LossSelection.DICE : lambda: monai.losses.DiceLoss(),
     LossSelection.DICECE : lambda: monai.losses.DiceCELoss(),
-    LossSelection.FOCAL : lambda: monai.losses.FocalLoss(),
+    LossSelection.FOCAL : lambda: monai.losses.FocalLoss(skip_this_function=True),
     LossSelection.DICEFOCAL : lambda: monai.losses.DiceFocalLoss(),
-    LossSelection.CLDICE : lambda: monai.losses.SoftclDiceLoss()
+    LossSelection.CLDICE : lambda: monai.losses.SoftDiceclDiceLoss(alpha=0.5)
 }

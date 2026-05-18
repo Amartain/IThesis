@@ -14,7 +14,7 @@ DATASET = selection.DatasetSelection.KIMIA99
 LOSS = selection.LossSelection.DICECE
 
 # training
-NO_EPOCHS = 20
+NO_EPOCHS = 200
 EARLY_STOP = 3
 LR_RATE = 1e-4
 
@@ -40,9 +40,15 @@ parser.add_argument('--test_dataset', nargs=1, type=bool, default=False,help='Se
 
 args = parser.parse_args()
 
+if args.loss == 'CLDICE' or args.loss == 'FOCAL':
+    import sys
+    print("Exit due to CLDICE / FOCAL loss use.")
+    sys.exit(0)
 
 def start():
     # training mode
+
+
     if args.evaluation is None:
         print("Training Mode")
         

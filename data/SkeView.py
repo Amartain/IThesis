@@ -74,7 +74,7 @@ class SkeView(Dataset):
             with Image.open(filepath) as img:
                 width, height = img.size
 
-                if width <= 512 or self.size_filter <= self.size_filter:
+                if width <= self.size_filter and height <= self.size_filter:
                     labels.append(label)
 
         return labels
